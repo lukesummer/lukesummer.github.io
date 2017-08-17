@@ -1,0 +1,899 @@
+<!--post, page, search, tags,categries, 什么都不是(index)-->
+<!--以下显示的时文章的内容-->
+
+ <!DOCTYPE HTML>
+<html lang="default">
+<head>
+  <meta name="baidu-site-verification" content="LaEytkZ008" />
+  <meta charset="UTF-8">
+  
+    <title>Hexo博客搭建备忘手册 | Luke&#39;s Summer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Luke Wang">
+    
+    <meta name="description" itemprop="description" content="这篇hexo博客的搭建流程只是作为一个备忘罢了，而且由于本人较懒，只能先弄个基本框架，然后以后有空再一点一点填补空缺吧。。。至少有胜于无。">
+    
+    
+    <meta name="description" content="这篇hexo博客的搭建流程只是作为一个备忘罢了，而且由于本人较懒，只能先弄个基本框架，然后以后有空再一点一点填补空缺吧。。。至少有胜于无。">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客搭建备忘手册">
+<meta property="og:url" content="http://lukesummer.org/2015/07/27/20150727-hexo-memo/index.html">
+<meta property="og:site_name" content="Luke&#39;s Summer">
+<meta property="og:description" content="这篇hexo博客的搭建流程只是作为一个备忘罢了，而且由于本人较懒，只能先弄个基本框架，然后以后有空再一点一点填补空缺吧。。。至少有胜于无。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-08-10T15:08:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo博客搭建备忘手册">
+<meta name="twitter:description" content="这篇hexo博客的搭建流程只是作为一个备忘罢了，而且由于本人较懒，只能先弄个基本框架，然后以后有空再一点一点填补空缺吧。。。至少有胜于无。">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Luke&#39;s Summer" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/sun-smile-glasses-icon_128.png">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		  <!--如果_config.yml中的imglogo是true并且src下有图片地址-->
+			<div id="imglogo">
+				<a href="/"><img src="/img/sun-smile-glasses-icon_128.png" alt="Luke&#39;s Summer" title="Luke&#39;s Summer"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Luke&#39;s Summer">Luke&#39;s Summer</a></h1>
+				<h2 class="blog-motto">Take it easy and keep myself busy.</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					       <!--遍历所有的theme.menu下的变量-->
+						<li><a href="/">Home</a></li>
+					      <!--遍历所有的theme.menu下的变量-->
+						<li><a href="/study">Study</a></li>
+					      <!--遍历所有的theme.menu下的变量-->
+						<li><a href="/life">Life</a></li>
+					      <!--遍历所有的theme.menu下的变量-->
+						<li><a href="/archives">Archives</a></li>
+					      <!--遍历所有的theme.menu下的变量-->
+						<li><a href="/source">Sources</a></li>
+					      <!--遍历所有的theme.menu下的变量-->
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
+							<label>Search</label>
+					     <input type="text" id="st-search-input" name="q" class="st-search-input" size="30" placeholder="Search"/><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/07/27/20150727-hexo-memo/" title="Hexo博客搭建备忘手册" itemprop="url">Hexo博客搭建备忘手册</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="http://lukesummer.org/about" title="Luke Wang" target="_blank" itemprop="author">Luke Wang</a>
+		
+  <p class="article-time">
+    <time datetime="2015-07-27T15:36:43.000Z" itemprop="datePublished"> Published 2015-07-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo的框架"><span class="toc-number">1.</span> <span class="toc-text">hexo的框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于hexo的基本介绍"><span class="toc-number">2.</span> <span class="toc-text">关于hexo的基本介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo的安装"><span class="toc-number">2.1.</span> <span class="toc-text">Hexo的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#github的注册"><span class="toc-number">2.2.</span> <span class="toc-text">github的注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH"><span class="toc-number">2.3.</span> <span class="toc-text">SSH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo主题"><span class="toc-number">2.4.</span> <span class="toc-text">hexo主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#markdown-语法"><span class="toc-number">2.5.</span> <span class="toc-text">markdown 语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域名和DNS服务器"><span class="toc-number">2.6.</span> <span class="toc-text">域名和DNS服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三方评论系统（多说-amp-disqus）"><span class="toc-number">2.7.</span> <span class="toc-text">第三方评论系统（多说&disqus）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三方搜索引擎"><span class="toc-number">2.8.</span> <span class="toc-text">第三方搜索引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三方的统计工具"><span class="toc-number">2.9.</span> <span class="toc-text">第三方的统计工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo主题的修改"><span class="toc-number">3.</span> <span class="toc-text">Hexo主题的修改</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jacman"><span class="toc-number">3.1.</span> <span class="toc-text">jacman</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hueman"><span class="toc-number">3.2.</span> <span class="toc-text">hueman</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他辅助工具"><span class="toc-number">4.</span> <span class="toc-text">其他辅助工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#slider-master"><span class="toc-number">4.1.</span> <span class="toc-text">slider-master</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#swiftype搜索"><span class="toc-number">4.2.</span> <span class="toc-text">swiftype搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dewplayer"><span class="toc-number">4.3.</span> <span class="toc-text">dewplayer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#百度统计"><span class="toc-number">4.4.</span> <span class="toc-text">百度统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谷歌统计"><span class="toc-number">4.5.</span> <span class="toc-text">谷歌统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七牛cdn加速"><span class="toc-number">4.6.</span> <span class="toc-text">七牛cdn加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-page发布器"><span class="toc-number">4.7.</span> <span class="toc-text">git page发布器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#godaddy域名申请"><span class="toc-number">4.8.</span> <span class="toc-text">godaddy域名申请</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS解析申请"><span class="toc-number">4.9.</span> <span class="toc-text">DNS解析申请</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-number">4.10.</span> <span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-number">5.</span> <span class="toc-text">问题</span></a></li></ol>
+		
+		</div>
+		
+		<p>感觉一般的独立博客都会首先介绍自己的所用的博客框架搭建的过程，原来觉得没什么必要。因为这些东西网上都已经泛滥了。不过，前段时间更新hexo的时候出现了一大堆问题，于是才明白，写自己的搭建过程更多地是为了自己啊。一旦出现长时间没有更新博客，很有可能把博客的框架全都忘了，如果没有一个备忘，就只能一点点死扣代码然后去猜去试，或者去hexo官网去拼命地查。如此说来，真的不如写一篇搭建流程，一方面方便了别人多了一种搭建的方式，另一方面也给自己一个备忘。<br>不过由于一贯懒散，感觉要把整个流程整理出来对我来说还是一个大工程，不过有胜于无，至少可以先整个初版框架，然后一点一点的补。</p>
+<h1 id="hexo的框架"><a href="#hexo的框架" class="headerlink" title="hexo的框架"></a>hexo的框架</h1><p>首先我想说的就是hexo的框架：</p>
+<p>框架是最容易忘的，于是按照习惯思维习惯，我也为hexo的框架画了一张图。</p>
+<h1 id="关于hexo的基本介绍"><a href="#关于hexo的基本介绍" class="headerlink" title="关于hexo的基本介绍"></a>关于hexo的基本介绍</h1><p><a href="http://zipperary.com/2013/05/28/hexo-guide-1/#more" target="_blank" rel="external">参考博文</a></p>
+<h2 id="Hexo的安装"><a href="#Hexo的安装" class="headerlink" title="Hexo的安装"></a>Hexo的安装</h2><ol>
+<li>安装git<br>  下载链接：<br>  git-scm.com/downloads<br>  安装完git之后，我们就需要用到git bash。什么是git bash呢？就是一个虚拟的命令窗口，接下来所有的输入命令的事情都在git bash下完成啦。<br>  点击“开始”，找到git目录，再找到git Bash并点开即可。</li>
+<li>安装node.js<br>  下载链接:<br>  <a href="https://nodejs.org" target="_blank" rel="external">https://nodejs.org</a><br>  安装完node.js之后可以通过以下命令验证安装是否成功。当然是在git bash下输入的。<br>  node -v<br>  npm -v<br>  这里面-v的意思就是版本信息(version)的意思，我们就是要查看一下，node和npm的版本，如果有信息说明我们的计算机上已经安装了这个东西。</li>
+<li>hexo的初始化<br>  接下来我们就要安装hexo工具，有了它我们的独立博客的生成和管理起来就非常方便。这是一个由台湾小伙开发出来的工具，所以，很荣幸，咱们有中文版的官网可以浏览。<br>  官网地址：<a href="https://hexo.io/zh-cn/" target="_blank" rel="external">https://hexo.io/zh-cn/</a><br>  我们的hexo可以通过npm这个工具去下载安装，不用管npm是什么，就是一个能够下载并安装hexo的工具而已。<br>  在git bash下面输入：<br>  npm install -g hexo-cli<br>  你可以在某个目录下建立一个博客的根目录，比如blog或者jade_blog。<br>  hexo init <folder><br>  npm install</folder></li>
+<li>Hexo的部署<br>  要用到部署，我们需要另一个插件，这个插件和git有关，还是在git bash下面：<br>  npm install hexo-deployer-git –save<br>  一旦安装了git和node.js，hexo的初始化工作就变得非常简单，本身也是因为其简单才逐渐流行起来的。</li>
+<li>生成网页<br>  hexo clean<br>  hexo g<br>  hexo s<h2 id="github的注册"><a href="#github的注册" class="headerlink" title="github的注册"></a>github的注册</h2>注册完之后，我们需要在新建一个repository. 这个repository的名称必须是你的用户名加github.io也就是jayde.github.io<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2></li>
+<li><p>常规部署<br>cd ~/.ssh<br>ssh-keygen -t rsa -C “4lotus1021@gmail.com”<br>eval “$(ssh-agent)”<br>ssh-add &lt;你的ssh名称&gt;<br>将XXX.pub里的内容复制到github上面<br>然后再cd到你的博客目录下就可以啦<br>cd /d/jayde (cd的d后有括号)</p>
+</li>
+<li><p>我遇到过的问题<br> (1) 当我输入hexo d进行部署的时候，系统报了如下错误</p>
+<pre><code>unable to auto-detect email address(got &apos;luke@luke-PC.(none)&apos;)
+这是因为windows下我们需要设置一下全局变量
+命令如下：
+git config --global user.email &quot;you@example.com&quot;  
+git config --global user.name &quot;Your Name&quot;  
+值得注意的是，gloabl的用户信息是在~/下的gitconfig文件中，但是它的优先级没有项目下.git/config优先级高。
+</code></pre><p> (2) 卸载git的时候，系统提示我必须先关闭那些ssh-agents，但是不知道怎么关闭<br> (3) 个人原因，我需要更新github账号。我先配置了global的用户信息和邮箱，但是每次hexo d之后都会报错。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">  Error: ERROR: Permission to wangluzhou/wangluzhou.github.io.git denied to lukesummer.</div><div class="line">fatal: Could not read from remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line"></div><div class="line">    at ChildProcess.&lt;anonymous&gt; (/Users/luke/blog/node_modules/hexo-deployer-git/node_modules/hexo-util/lib/spawn.js:42:17)</div><div class="line">    at ChildProcess.emit (events.js:98:17)</div><div class="line">    at maybeClose (child_process.js:756:16)</div><div class="line">    at Process.ChildProcess._handle.onexit (child_process.js:823:5)</div></pre></td></tr></table></figure>
+<p>从报错信息来看，似乎是我的用户名还是老的用户名，而不是当前新的用户名wangluzhou，但是我在/blog/.deploy_git/.git/config下没有找到用户信息，而且即使把.deploy_git删除后重新生成仍然报了这个错误。<br>于是我决定用排除法：<br>第一步. 我确定我所有的git配置文件都已经改成了新的用户名和邮箱，也重新配置了ssh，因此上传的时候肯定没有用我新建的ssh和新配置的用户信息。<br>我在命令行下输入<code>ssh -T git@github.com</code>，居然返回的用户民是<code>lukesummer</code>！进一步验证了我的猜想。<br>于是我觉得问题出在ssh-add上，我可能把ssh添加到某个地方，然后还处于一个最大优先级。<br>第二步，网上搜一下mac+ssh-add，就找到<a href="http://www.icodeyou.com/2016/01/17/ssh-add-mac/" target="_blank" rel="external">这篇文章</a><br>我想问题的最终答案肯定在keychain里面。果然在keychain里面找到了ssh，虽然不知道原理，但是我知道我必须删除它且再重新创造一个，然后重启。<br>完成这些之后，终于完成了本地git账户的迁移。</p>
+</li>
+</ol>
+<p>   然后到jayde的目录下找到_config.yml去配置你的github的仓库信息。<br>deploy:<br>       type: git<br>       repository: git@github.com:jayde721/jayde721.github.io.git<br>       branch: master</p>
+<h2 id="hexo主题"><a href="#hexo主题" class="headerlink" title="hexo主题"></a>hexo主题</h2><p>   首先要下载主题：<br>   git clone <a href="https://github.com/wuchong/jacman.git" target="_blank" rel="external">https://github.com/wuchong/jacman.git</a> themes/jacman</p>
+<h2 id="markdown-语法"><a href="#markdown-语法" class="headerlink" title="markdown 语法"></a>markdown 语法</h2><p>   www.appin.com/markdown/</p>
+<h2 id="域名和DNS服务器"><a href="#域名和DNS服务器" class="headerlink" title="域名和DNS服务器"></a>域名和DNS服务器</h2><p>   godaddy</p>
+<h2 id="第三方评论系统（多说-amp-disqus）"><a href="#第三方评论系统（多说-amp-disqus）" class="headerlink" title="第三方评论系统（多说&amp;disqus）"></a>第三方评论系统（多说&amp;disqus）</h2><h2 id="第三方搜索引擎"><a href="#第三方搜索引擎" class="headerlink" title="第三方搜索引擎"></a>第三方搜索引擎</h2><p>   swiftype</p>
+<h2 id="第三方的统计工具"><a href="#第三方的统计工具" class="headerlink" title="第三方的统计工具"></a>第三方的统计工具</h2><p>   百度统计</p>
+<h1 id="Hexo主题的修改"><a href="#Hexo主题的修改" class="headerlink" title="Hexo主题的修改"></a>Hexo主题的修改</h1><h2 id="jacman"><a href="#jacman" class="headerlink" title="jacman"></a>jacman</h2><p>主题用了jacman主题，不过后来东改改西改改，有点感觉面目全非了。而且在改的过程没有养成良好的代码的习惯，导致现在也不知道改了什么地方，有些styl的代码都是自己在chrome下不停尝试弄出来，所以也不知其所以然。不过有几点实用的功能需要记得，比如，评论系统如何添加，文章如何添加图片等等。</p>
+<ol>
+<li>我发现如果目录没有二级目录，就被<code>element.style</code>默认设置成<code>display:none</code>，从而无法显示。所以在<code>helper.styl</code>里的<code>toc-article</code>下面加上了<code>display block !important</code>来覆盖<code>element.style</code>的默认设置。</li>
+<li>现在存在archive一页如果文章很少，footer就是停在页面中间，有一个办法就是将<code>index.styl</code>中的<code>container</code>设置<code>min-height 490-px</code>，但是这样治标不治本，不同的显示屏大小肯定不一样。这个问题还需要好好研究。</li>
+</ol>
+<h2 id="hueman"><a href="#hueman" class="headerlink" title="hueman"></a>hueman</h2><ol>
+<li><p>hueman有一个问题就是每一篇博文都会有一张缩略图，但是有些博客是不需要图片的，怎么办呢？可以借鉴jacman里面的做法，在图片的class属性上设置index.display:none的语句（不一定准确，以真实代码为主）</p>
+</li>
+<li><p>Hueman的header.ejs采用的时局部缓存的技术，也就是说一次加载一下以后就不用加载了。<br>&lt;%- partial(‘_partial/header’, null, {cache: !config.relative_link}) %&gt;</p>
+</li>
+<li><p>header.ejs直接替换(包括ejs和styl文件)的时候，发生以下错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">ERROR Asset render failed: css/style.css</div><div class="line">Error: /Users/luke/blog/node_modules/hexo-renderer-stylus/node_modules/stylus/lib/functions/index.styl:128:38</div><div class="line">   124|</div><div class="line">   125| // darken by the given amount</div><div class="line">   126|</div><div class="line">   127| darken(color, amount)</div><div class="line">   128|   adjust(color, &apos;lightness&apos;, - amount)</div><div class="line">---------------------------------------------^</div><div class="line">   129|</div><div class="line">   130| // lighten by the given amount</div><div class="line">   131|</div><div class="line"></div><div class="line">TypeError: expected rgba or hsla, but got ident:color-theme</div></pre></td></tr></table></figure>
+</li>
+<li><p>可以通过container-inner的width来调节内容的宽度</p>
+</li>
+<li><p>解决搜索问题</p>
+</li>
+<li><p>解决footer的问题</p>
+</li>
+<li><p>给所有文章加上隐藏图片</p>
+</li>
+<li><p>解决百度统计的问题</p>
+</li>
+<li><p>向上返回按钮</p>
+</li>
+<li><p>解决mathjax和gallery问题</p>
+</li>
+</ol>
+<h1 id="其他辅助工具"><a href="#其他辅助工具" class="headerlink" title="其他辅助工具"></a>其他辅助工具</h1><h2 id="slider-master"><a href="#slider-master" class="headerlink" title="slider-master"></a>slider-master</h2><p>对于jacman而言，slider-master的js代码一定要加在最后，否则会影响share功能！<br>不要忘了jquery2.0.3</p>
+<h2 id="swiftype搜索"><a href="#swiftype搜索" class="headerlink" title="swiftype搜索"></a>swiftype搜索</h2><h2 id="dewplayer"><a href="#dewplayer" class="headerlink" title="dewplayer"></a>dewplayer</h2><h2 id="百度统计"><a href="#百度统计" class="headerlink" title="百度统计"></a>百度统计</h2><h2 id="谷歌统计"><a href="#谷歌统计" class="headerlink" title="谷歌统计"></a>谷歌统计</h2><h2 id="七牛cdn加速"><a href="#七牛cdn加速" class="headerlink" title="七牛cdn加速"></a>七牛cdn加速</h2><h2 id="git-page发布器"><a href="#git-page发布器" class="headerlink" title="git page发布器"></a>git page发布器</h2><h2 id="godaddy域名申请"><a href="#godaddy域名申请" class="headerlink" title="godaddy域名申请"></a>godaddy域名申请</h2><p>CNAME</p>
+<h2 id="DNS解析申请"><a href="#DNS解析申请" class="headerlink" title="DNS解析申请"></a>DNS解析申请</h2><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li>Hexo的config文件的主题选择中，能输入一个，后面不能加注释</li>
+<li>img-topic   -&gt; article.styl-&gt; article/.article-content/.img-topic<br>复制到hueman的article.styl-&gt;article-entry</li>
+<li>jacman 有两个 article.ejs</li>
+<li>hueman 的多说评论的添加</li>
+<li>hexo server在运行过程中，不能更新主题<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1></li>
+<li>在after-footer中，theme和config是不是一个东西?貌似指的都是主体的config文件</li>
+<li>二级目录怎么解决？</li>
+<li>自定义字体的ttf文件到底是通过什么途径读取到得呢？</li>
+</ol>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/W3C/">W3C</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hexo/">hexo</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://lukesummer.org/2015/07/27/20150727-hexo-memo/" data-title="Hexo博客搭建备忘手册 | Luke&#39;s Summer" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/08/02/20150802-binary-search/" title="二分搜索及其变体">
+  <strong>Previous：</strong><br/>
+  <span>
+  二分搜索及其变体</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/07/27/20150727-cpp-oop-2/"  title="C++基础——拷贝构造函数，析构函数，堆，栈，内存管理">
+ <strong>Next：</strong><br/> 
+ <span>C++基础——拷贝构造函数，析构函数，堆，栈，内存管理
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section class="comment" id="comments">
+ <!-- UY BEGIN -->
+ <div id="uyan_frame"></div>
+ <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2140846"></script>
+  <!-- UY END -->
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+<!--跟目录显示有关-->
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo的框架"><span class="toc-number">1.</span> <span class="toc-text">hexo的框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于hexo的基本介绍"><span class="toc-number">2.</span> <span class="toc-text">关于hexo的基本介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo的安装"><span class="toc-number">2.1.</span> <span class="toc-text">Hexo的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#github的注册"><span class="toc-number">2.2.</span> <span class="toc-text">github的注册</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SSH"><span class="toc-number">2.3.</span> <span class="toc-text">SSH</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo主题"><span class="toc-number">2.4.</span> <span class="toc-text">hexo主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#markdown-语法"><span class="toc-number">2.5.</span> <span class="toc-text">markdown 语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域名和DNS服务器"><span class="toc-number">2.6.</span> <span class="toc-text">域名和DNS服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三方评论系统（多说-amp-disqus）"><span class="toc-number">2.7.</span> <span class="toc-text">第三方评论系统（多说&disqus）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三方搜索引擎"><span class="toc-number">2.8.</span> <span class="toc-text">第三方搜索引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三方的统计工具"><span class="toc-number">2.9.</span> <span class="toc-text">第三方的统计工具</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo主题的修改"><span class="toc-number">3.</span> <span class="toc-text">Hexo主题的修改</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#jacman"><span class="toc-number">3.1.</span> <span class="toc-text">jacman</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hueman"><span class="toc-number">3.2.</span> <span class="toc-text">hueman</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他辅助工具"><span class="toc-number">4.</span> <span class="toc-text">其他辅助工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#slider-master"><span class="toc-number">4.1.</span> <span class="toc-text">slider-master</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#swiftype搜索"><span class="toc-number">4.2.</span> <span class="toc-text">swiftype搜索</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#dewplayer"><span class="toc-number">4.3.</span> <span class="toc-text">dewplayer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#百度统计"><span class="toc-number">4.4.</span> <span class="toc-text">百度统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#谷歌统计"><span class="toc-number">4.5.</span> <span class="toc-text">谷歌统计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七牛cdn加速"><span class="toc-number">4.6.</span> <span class="toc-text">七牛cdn加速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#git-page发布器"><span class="toc-number">4.7.</span> <span class="toc-text">git page发布器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#godaddy域名申请"><span class="toc-number">4.8.</span> <span class="toc-text">godaddy域名申请</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS解析申请"><span class="toc-number">4.9.</span> <span class="toc-text">DNS解析申请</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-number">4.10.</span> <span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-number">5.</span> <span class="toc-text">问题</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+
+<div id="sidebar-authorInfo">
+	
+		<div class="sidebar-author-logo"></div>		
+	
+	
+	<section class="sidebar-author-info">
+		
+			<p> 生日快乐，Luke。 </p>
+		
+	</section>
+	 
+</div>
+
+
+
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  <script type="text/javascript" src="swfobject.js"></script>
+
+<style type="text/css">
+#music-content {
+  position: relative;
+  float: none;
+  width: auto;
+  margin: auto;
+}
+#hint {
+  color:#666;
+  margin-left:15%;
+  width:300px;
+  text-align:left;
+  margin-top:3em;
+}
+</style>
+
+
+
+
+<!--注意事项，data中得dewplayer前面一定要加/，否则有些页面路径就不正确-->
+<div id="music-content">
+  <p class="asidetitle">Music</p>
+  <br>
+   <!--bubble-->
+	<!-- <div id="dewplayer_content">
+	<object data="/dewplayer/dewplayer-bubble.swf" width="250" height="65" name="dewplayer" id="dewplayer" type="application/x-shockwave-flash">
+	<param name="movie" value="dewplayer/dewplayer-bubble.swf" />
+	<param name="flashvars" value="mp3=http://middlesummer.qiniudn.com/青春之旅.mp3" />
+	<param name="wmode" value="transparent" />
+	</object> -->
+  <!--playlist-->
+  <object type="application/x-shockwave-flash" data="/dewplayer/dewplayer-playlist.swf" width="300" height="200" id="dewplayer" name="dewplayer">
+  <param name="wmode" value="transparent" />
+  <param name="movie" value="dewplayer/dewplayer-playlist.swf" />
+  <param name="flashvars" value="showtime=true&autoreplay=true&xml=/playlist/playlist.xml" />
+  </object>
+</div>
+
+<!--<script type="text/javascript">
+var flashvars = {
+  mp3: "http://middlesummer.qiniudn.com/青春之旅.mp3"
+};
+var params = {
+  wmode: "transparent"
+};
+var attributes = {
+  id: "dewplayer"
+};
+swfobject.embedSWF("dewplayer-bubble.swf", "dewplayer_content", "250", "65", "9.0.0", false, flashvars, params, attributes);
+</script>-->
+
+  
+  <div class="widget-wrap">
+    <h3 class="asidetitle">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Economics/">Economics</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/W3C/">W3C</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/Cpp/" title="Cpp">Cpp<sup>8</sup></a></li>
+		
+			<li><a href="/tags/我所谓的诗/" title="我所谓的诗">我所谓的诗<sup>6</sup></a></li>
+		
+			<li><a href="/tags/geekband/" title="geekband">geekband<sup>3</sup></a></li>
+		
+			<li><a href="/tags/随想/" title="随想">随想<sup>2</sup></a></li>
+		
+			<li><a href="/tags/inheritance/" title="inheritance">inheritance<sup>2</sup></a></li>
+		
+			<li><a href="/tags/Java/" title="Java">Java<sup>2</sup></a></li>
+		
+			<li><a href="/tags/面试/" title="面试">面试<sup>1</sup></a></li>
+		
+			<li><a href="/tags/意识流/" title="意识流">意识流<sup>1</sup></a></li>
+		
+			<li><a href="/tags/delegation/" title="delegation">delegation<sup>1</sup></a></li>
+		
+			<li><a href="/tags/随拍/" title="随拍">随拍<sup>1</sup></a></li>
+		
+			<li><a href="/tags/C-primer/" title="C++ primer">C++ primer<sup>1</sup></a></li>
+		
+			<li><a href="/tags/basic-knowledge/" title="basic knowledge">basic knowledge<sup>1</sup></a></li>
+		
+			<li><a href="/tags/Configuration/" title="Configuration">Configuration<sup>1</sup></a></li>
+		
+			<li><a href="/tags/cout/" title="cout">cout<sup>1</sup></a></li>
+		
+			<li><a href="/tags/stack/" title="stack">stack<sup>1</sup></a></li>
+		
+			<li><a href="/tags/heap/" title="heap">heap<sup>1</sup></a></li>
+		
+			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+		
+			<li><a href="/tags/static/" title="static">static<sup>1</sup></a></li>
+		
+			<li><a href="/tags/singleton/" title="singleton">singleton<sup>1</sup></a></li>
+		
+			<li><a href="/tags/template/" title="template">template<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  
+  <div class="tagcloudlist">
+    <p class="asidetitle">Tag Cloud</p>
+    <div class="tagcloudlist clearfix">
+       <a href="/tags/C-primer/" style="font-size: 10px;">C++ primer</a> <a href="/tags/Configuration/" style="font-size: 10px;">Configuration</a> <a href="/tags/Cpp/" style="font-size: 20px;">Cpp</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/PMI/" style="font-size: 10px;">PMI</a> <a href="/tags/basic-knowledge/" style="font-size: 10px;">basic knowledge</a> <a href="/tags/cout/" style="font-size: 10px;">cout</a> <a href="/tags/delegation/" style="font-size: 10px;">delegation</a> <a href="/tags/geekband/" style="font-size: 15px;">geekband</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/inheritance/" style="font-size: 12.5px;">inheritance</a> <a href="/tags/singleton/" style="font-size: 10px;">singleton</a> <a href="/tags/stack/" style="font-size: 10px;">stack</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/template/" style="font-size: 10px;">template</a> <a href="/tags/意识流/" style="font-size: 10px;">意识流</a> <a href="/tags/我所谓的诗/" style="font-size: 17.5px;">我所谓的诗</a> <a href="/tags/随想/" style="font-size: 12.5px;">随想</a> <a href="/tags/随拍/" style="font-size: 10px;">随拍</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/middlesummer/" target="_blank" title="middlesummer的博客">middlesummer的博客</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://kangfoo.github.io/" target="_blank" title=" 康哥的博客~">Kangfoo&#39;s blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://jayde721.com" target="_blank" title="山草小驻">山草小驻</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Luke Wang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+  <div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/lukesummer" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		<a href="https://www.facebook.com/lukewanglz" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+		<a href="mailto:lukewanglz@outlook.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+</footer>
+
+
+
+<!-- <div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Luke. <br/>
+			Welcome to my blog. Wish you could find something useful here!</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/lukesummer" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		<a href="https://www.facebook.com/lukewanglz" target="_blank" class="icon-facebook" title="facebook"></a>
+		
+		
+		
+		
+		
+		
+		<a href="mailto:lukewanglz@outlook.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2017 
+		
+		<a href="http://lukesummer.org/about" target="_blank" title="Luke Wang">Luke Wang</a>
+		
+		</p>
+</div>
+  --></footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<!-- skitterSlider -->
+<script type="text/javascript" language="javascript" src="/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" language="javascript" src="/js/jquery.skitter.min.js"></script>
+<!-- slider master-->
+<script type="text/javascript" src="/slider-master/js/jssor.js"></script>
+<script type="text/javascript" src="/slider-master/js/jssor.slider.js"></script>
+<link href="/slider-master/css/slider-master.css" rel="stylesheet" />
+<link href="/css/styles.css" type="text/css" media="all" rel="stylesheet" />
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+
+<!-- Slider master begin-->
+  <!--slider master end-->
+});
+</script>
+
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+<!--disqus在theme和config的配置文件配置都可以-->
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+<!-- Swiftype Begin -->
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v1/st.js','_st');
+
+  _st('install','_MCrayRH1x2yYifEojbi');
+</script>
+
+<!-- Swifttype End -->
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-60944965-1', 'lukesummer.org');  
+ga('send', 'pageview');
+</script>
+
+
+
+<!--<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%68b2af6de021dae8b06acf46d374d64a' type='text/javascript'%3E%3C/script%3E"));
+</script>-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?68b2af6de021dae8b06acf46d374d64a";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+ <!-- Slider master begin-->
+ var _SlideshowTransitions = [
+          //Collapse Random
+          { $Duration: 1000, $Delay: 80, $Cols: 10, $Rows: 4, $Clip: 15, $SlideOut: true, $Easing: $JssorEasing$.$EaseOutQuad }
+
+          //Fade in LR Chess
+          , { $Duration: 1200, y: 0.3, $Cols: 2, $During: { $Top: [0.3, 0.7] }, $ChessMode: { $Column: 12 }, $Easing: { $Top: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2, $Outside: true }
+
+          //Rotate VDouble+ out
+          , { $Duration: 1000, x: -1, y: 2, $Rows: 2, $Zoom: 11, $Rotate: 1, $SlideOut: true, $Assembly: 2049, $ChessMode: { $Row: 15 }, $Easing: { $Left: $JssorEasing$.$EaseInExpo, $Top: $JssorEasing$.$EaseInExpo, $Zoom: $JssorEasing$.$EaseInExpo, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInExpo }, $Opacity: 2, $Round: { $Rotate: 0.85 } }
+
+          ////Swing Inside in Stairs
+          //, { $Duration: 1200, x: 0.2, y: -0.1, $Delay: 20, $Cols: 10, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseInWave, $Clip: $JssorEasing$.$EaseOutQuad }, $Round: { $Left: 1.3, $Top: 2.5} }
+
+          //Zoom HDouble+ out
+          , { $Duration: 1200, x: 4, $Cols: 2, $Zoom: 11, $SlideOut: true, $Assembly: 2049, $ChessMode: { $Column: 15 }, $Easing: { $Left: $JssorEasing$.$EaseInExpo, $Zoom: $JssorEasing$.$EaseInExpo, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
+
+          ////Dodge Pet Inside in Stairs
+          //, { $Duration: 1500, x: 0.2, y: -0.1, $Delay: 20, $Cols: 10, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseInWave, $Clip: $JssorEasing$.$EaseOutQuad }, $Round: { $Left: 0.8, $Top: 2.5} }
+
+          //Rotate Zoom+ out BL
+          , { $Duration: 1200, x: 4, y: -4, $Zoom: 11, $Rotate: 1, $SlideOut: true, $Easing: { $Left: $JssorEasing$.$EaseInExpo, $Top: $JssorEasing$.$EaseInExpo, $Zoom: $JssorEasing$.$EaseInExpo, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInExpo }, $Opacity: 2, $Round: { $Rotate: 0.8 } }
+
+          //Dodge Dance Inside in Random
+          , { $Duration: 1500, x: 0.3, y: -0.3, $Delay: 80, $Cols: 10, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Easing: { $Left: $JssorEasing$.$EaseInJump, $Top: $JssorEasing$.$EaseInJump, $Clip: $JssorEasing$.$EaseOutQuad }, $Round: { $Left: 0.8, $Top: 2.5 } }
+
+          //Rotate VFork+ out
+          , { $Duration: 1200, x: -3, y: 1, $Rows: 2, $Zoom: 11, $Rotate: 1, $SlideOut: true, $Assembly: 2049, $ChessMode: { $Row: 28 }, $Easing: { $Left: $JssorEasing$.$EaseInExpo, $Top: $JssorEasing$.$EaseInExpo, $Zoom: $JssorEasing$.$EaseInExpo, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInExpo }, $Opacity: 2, $Round: { $Rotate: 0.7 } }
+
+          //Clip and Chess in
+          , { $Duration: 1200, y: -1, $Cols: 10, $Rows: 4, $Clip: 15, $During: { $Top: [0.5, 0.5], $Clip: [0, 0.5] }, $Formation: $JssorSlideshowFormations$.$FormationStraight, $ChessMode: { $Column: 12 }, $ScaleClip: 0.5 }
+
+          ////Swing Inside in Swirl
+          //, { $Duration: 1200, x: 0.2, y: -0.1, $Delay: 20, $Cols: 10, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationSwirl, $Assembly: 260, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseInWave, $Clip: $JssorEasing$.$EaseOutQuad }, $Round: { $Left: 1.3, $Top: 2.5} }
+
+          ////Rotate Zoom+ out
+          //, { $Duration: 1200, $Zoom: 11, $Rotate: 1, $SlideOut: true, $Easing: { $Zoom: $JssorEasing$.$EaseInCubic, $Rotate: $JssorEasing$.$EaseInCubic }, $Opacity: 2, $Round: { $Rotate: 0.7} }
+
+          ////Dodge Pet Inside in ZigZag
+          //, { $Duration: 1500, x: 0.2, y: -0.1, $Delay: 20, $Cols: 10, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationZigZag, $Assembly: 260, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseInWave, $Clip: $JssorEasing$.$EaseOutQuad }, $Round: { $Left: 0.8, $Top: 2.5} }
+
+          //Rotate Zoom- out TL
+          , { $Duration: 1200, x: 0.5, y: 0.5, $Zoom: 1, $Rotate: 1, $SlideOut: true, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Top: $JssorEasing$.$EaseInCubic, $Zoom: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInCubic }, $Opacity: 2, $Round: { $Rotate: 0.5 } }
+
+          //Rotate Zoom- in BR
+          , { $Duration: 1200, x: -0.6, y: -0.6, $Zoom: 1, $Rotate: 1, $During: { $Left: [0.2, 0.8], $Top: [0.2, 0.8], $Zoom: [0.2, 0.8], $Rotate: [0.2, 0.8] }, $Easing: { $Zoom: $JssorEasing$.$EaseSwing, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseSwing }, $Opacity: 2, $Round: { $Rotate: 0.5 } }
+
+          // Wave out Eagle
+          , { $Duration: 1500, y: -0.5, $Delay: 60, $Cols: 24, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationCircle, $Easing: $JssorEasing$.$EaseInWave, $Round: { $Top: 1.5 } }
+
+          //Expand Stairs
+          , { $Duration: 1000, $Delay: 30, $Cols: 10, $Rows: 4, $Clip: 15, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 2050, $Easing: $JssorEasing$.$EaseInQuad }
+
+          //Fade Clip out H
+          , { $Duration: 1200, $Delay: 20, $Clip: 3, $SlideOut: true, $Assembly: 260, $Easing: { $Clip: $JssorEasing$.$EaseOutCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
+
+          ////Dodge Pet Inside in Random Chess
+          //, { $Duration: 1500, x: 0.2, y: -0.1, $Delay: 80, $Cols: 10, $Rows: 4, $Clip: 15, $During: { $Left: [0.2, 0.8], $Top: [0.2, 0.8] }, $ChessMode: { $Column: 15, $Row: 15 }, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseInWave, $Clip: $JssorEasing$.$EaseLinear }, $Round: { $Left: 0.8, $Top: 2.5} }
+          ];
+
+          //Reference http://www.jssor.com/development/slider-with-caption-jquery.html
+          //Reference http://www.jssor.com/development/reference-ui-definition.html#captiondefinition
+          //Reference http://www.jssor.com/development/tool-caption-transition-viewer.html
+
+          var _CaptionTransitions = [];
+          _CaptionTransitions["L"] = { $Duration: 900, x: 0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+          _CaptionTransitions["R"] = { $Duration: 900, x: -0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+          _CaptionTransitions["T"] = { $Duration: 900, y: 0.6, $Easing: { $Top: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+          _CaptionTransitions["B"] = { $Duration: 900, y: -0.6, $Easing: { $Top: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+          _CaptionTransitions["TR"] = { $Duration: 900, x: -0.6, y: 0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine, $Top: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+
+          _CaptionTransitions["L|IB"] = { $Duration: 1200, x: 0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutBack }, $Opacity: 2 };
+          _CaptionTransitions["R|IB"] = { $Duration: 1200, x: -0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutBack }, $Opacity: 2 };
+          _CaptionTransitions["T|IB"] = { $Duration: 1200, y: 0.6, $Easing: { $Top: $JssorEasing$.$EaseInOutBack }, $Opacity: 2 };
+
+          _CaptionTransitions["CLIP|LR"] = { $Duration: 900, $Clip: 3, $Easing: { $Clip: $JssorEasing$.$EaseInOutCubic }, $Opacity: 2 };
+          _CaptionTransitions["CLIP|TB"] = { $Duration: 900, $Clip: 12, $Easing: { $Clip: $JssorEasing$.$EaseInOutCubic }, $Opacity: 2 };
+          _CaptionTransitions["CLIP|L"] = { $Duration: 900, $Clip: 1, $Easing: { $Clip: $JssorEasing$.$EaseInOutCubic }, $Opacity: 2 };
+
+          _CaptionTransitions["MCLIP|R"] = { $Duration: 900, $Clip: 2, $Move: true, $Easing: { $Clip: $JssorEasing$.$EaseInOutCubic }, $Opacity: 2 };
+          _CaptionTransitions["MCLIP|T"] = { $Duration: 900, $Clip: 4, $Move: true, $Easing: { $Clip: $JssorEasing$.$EaseInOutCubic }, $Opacity: 2 };
+
+          _CaptionTransitions["WV|B"] = { $Duration: 1200, x: -0.2, y: -0.6, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseLinear }, $Opacity: 2, $Round: { $Left: 1.5} };
+
+          _CaptionTransitions["TORTUOUS|VB"] = { $Duration: 1800, y: -0.2, $Zoom: 1, $Easing: { $Top: $JssorEasing$.$EaseOutWave, $Zoom: $JssorEasing$.$EaseOutCubic }, $Opacity: 2, $During: { $Top: [0, 0.7] }, $Round: { $Top: 1.3} };
+
+          _CaptionTransitions["LISTH|R"] = { $Duration: 1500, x: -0.8, $Clip: 1, $Easing: $JssorEasing$.$EaseInOutCubic, $ScaleClip: 0.8, $Opacity: 2, $During: { $Left: [0.4, 0.6], $Clip: [0, 0.4], $Opacity: [0.4, 0.6]} };
+
+          _CaptionTransitions["RTT|360"] = { $Duration: 900, $Rotate: 1, $Easing: { $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInQuad }, $Opacity: 2 };
+          _CaptionTransitions["RTT|10"] = { $Duration: 900, $Zoom: 11, $Rotate: 1, $Easing: { $Zoom: $JssorEasing$.$EaseInExpo, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInExpo }, $Opacity: 2, $Round: { $Rotate: 0.8} };
+
+          _CaptionTransitions["RTTL|BR"] = { $Duration: 900, x: -0.6, y: -0.6, $Zoom: 11, $Rotate: 1, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Top: $JssorEasing$.$EaseInCubic, $Zoom: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInCubic }, $Opacity: 2, $Round: { $Rotate: 0.8} };
+
+          _CaptionTransitions["T|IE*IE"] = { $Duration: 1800, y: 0.8, $Zoom: 11, $Rotate: -1.5, $Easing: { $Top: $JssorEasing$.$EaseInOutElastic, $Zoom: $JssorEasing$.$EaseInElastic, $Rotate: $JssorEasing$.$EaseInOutElastic }, $Opacity: 2, $During: { $Zoom: [0, 0.8], $Opacity: [0, 0.7] }, $Round: { $Rotate: 0.5} };
+
+          _CaptionTransitions["RTTS|R"] = { $Duration: 900, x: -0.6, $Zoom: 1, $Rotate: 1, $Easing: { $Left: $JssorEasing$.$EaseInQuad, $Zoom: $JssorEasing$.$EaseInQuad, $Rotate: $JssorEasing$.$EaseInQuad, $Opacity: $JssorEasing$.$EaseOutQuad }, $Opacity: 2, $Round: { $Rotate: 1.2} };
+          _CaptionTransitions["RTTS|T"] = { $Duration: 900, y: 0.6, $Zoom: 1, $Rotate: 1, $Easing: { $Top: $JssorEasing$.$EaseInQuad, $Zoom: $JssorEasing$.$EaseInQuad, $Rotate: $JssorEasing$.$EaseInQuad, $Opacity: $JssorEasing$.$EaseOutQuad }, $Opacity: 2, $Round: { $Rotate: 1.2} };
+
+          _CaptionTransitions["DDGDANCE|RB"] = { $Duration: 1800, x: -0.3, y: -0.3, $Zoom: 1, $Easing: { $Left: $JssorEasing$.$EaseInJump, $Top: $JssorEasing$.$EaseInJump, $Zoom: $JssorEasing$.$EaseOutQuad }, $Opacity: 2, $During: { $Left: [0, 0.8], $Top: [0, 0.8] }, $Round: { $Left: 0.8, $Top: 2.5} };
+          _CaptionTransitions["ZMF|10"] = { $Duration: 900, $Zoom: 11, $Easing: { $Zoom: $JssorEasing$.$EaseInExpo, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 };
+          _CaptionTransitions["DDG|TR"] = { $Duration: 1200, x: -0.3, y: 0.3, $Zoom: 1, $Easing: { $Left: $JssorEasing$.$EaseInJump, $Top: $JssorEasing$.$EaseInJump }, $Opacity: 2, $During: { $Left: [0, 0.8], $Top: [0, 0.8] }, $Round: { $Left: 0.8, $Top: 0.8} };
+
+          _CaptionTransitions["FLTTR|R"] = { $Duration: 900, x: -0.2, y: -0.1, $Easing: { $Left: $JssorEasing$.$EaseLinear, $Top: $JssorEasing$.$EaseInWave }, $Opacity: 2, $Round: { $Top: 1.3} };
+          _CaptionTransitions["FLTTRWN|LT"] = { $Duration: 1800, x: 0.5, y: 0.2, $Zoom: 1, $Easing: { $Left: $JssorEasing$.$EaseInOutSine, $Top: $JssorEasing$.$EaseInWave, $Zoom: $JssorEasing$.$EaseInOutQuad }, $Opacity: 2, $During: { $Left: [0, 0.7], $Top: [0.1, 0.7] }, $Round: { $Top: 1.3} };
+
+          _CaptionTransitions["ATTACK|BR"] = { $Duration: 1500, x: -0.1, y: -0.5, $Zoom: 1, $Easing: { $Left: $JssorEasing$.$EaseOutWave, $Top: $JssorEasing$.$EaseInExpo }, $Opacity: 2, $During: { $Left: [0.3, 0.7], $Top: [0, 0.7] }, $Round: { $Left: 1.3} };
+
+          _CaptionTransitions["FADE"] = { $Duration: 900, $Opacity: 2 };
+
+          var options = {
+              $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+              $AutoPlaySteps: 1,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
+              $AutoPlayInterval: 2000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+              $PauseOnHover: 1,                                   //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
+
+              $ArrowKeyNavigation: true,                    //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+              $SlideEasing: $JssorEasing$.$EaseOutQuint,          //[Optional] Specifies easing for right to left animation, default value is $JssorEasing$.$EaseOutQuad
+              $SlideDuration: 800,                                //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
+              $MinDragOffsetToSlide: 20,                          //[Optional] Minimum drag offset to trigger slide , default value is 20
+              //$SlideWidth: 600,                                 //[Optional] Width of every slide in pixels, default value is width of 'slides' container
+              //$SlideHeight: 300,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
+              $SlideSpacing: 0,                           //[Optional] Space between each slide in pixels, default value is 0
+              $DisplayPieces: 1,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
+              $ParkingPosition: 0,                                //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
+              $UISearchMode: 1,                                   //[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
+              $PlayOrientation: 1,                                //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
+              $DragOrientation: 3,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+
+              $SlideshowOptions: {                                //[Optional] Options to specify and enable slideshow or not
+                  $Class: $JssorSlideshowRunner$,                 //[Required] Class to create instance of slideshow
+                  $Transitions: _SlideshowTransitions,            //[Required] An array of slideshow transitions to play slideshow
+                  $TransitionsOrder: 1,                           //[Optional] The way to choose transition to play slide, 1 Sequence, 0 Random
+                  $ShowLink: true                                    //[Optional] Whether to bring slide link on top of the slider when slideshow is running, default value is false
+              },
+
+              $CaptionSliderOptions: {                            //[Optional] Options which specifies how to animate caption
+                  $Class: $JssorCaptionSlider$,                   //[Required] Class to create instance to animate caption
+                  $CaptionTransitions: _CaptionTransitions,       //[Required] An array of caption transitions to play caption, see caption transition section at jssor slideshow transition builder
+                  $PlayInMode: 1,                                 //[Optional] 0 None (no play), 1 Chain (goes after main slide), 3 Chain Flatten (goes after main slide and flatten all caption animations), default value is 1
+                  $PlayOutMode: 3                                 //[Optional] 0 None (no play), 1 Chain (goes before main slide), 3 Chain Flatten (goes before main slide and flatten all caption animations), default value is 1
+              },
+
+              $ArrowNavigatorOptions: {                       //[Optional] Options to specify and enable arrow navigator or not
+                  $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
+                  $ChanceToShow: 1,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                  $AutoCenter: 2,                                 //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                  $Steps: 1                                       //[Optional] Steps to go for each navigation request, default value is 1
+              },
+
+              $BulletNavigatorOptions: {                                //[Optional] Options to specify and enable navigator or not
+                  $Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
+                  $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                  $AutoCenter: 1,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                  $Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
+                  $Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
+                  $SpacingX: 4,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
+                  $SpacingY: 4,                                   //[Optional] Vertical space between each item in pixel, default value is 0
+                  $Orientation: 1                                 //[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
+              }
+          };
+
+          var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+          //responsive code begin
+          //you can remove responsive code if you don't want the slider scales while window resizes
+          function ScaleSlider() {
+              var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
+              if (parentWidth)
+                  jssor_slider1.$ScaleWidth(Math.max(Math.min(parentWidth, 980), 300));
+              else
+                  window.setTimeout(ScaleSlider, 30);
+          }
+          ScaleSlider();
+
+          $(window).bind("load", ScaleSlider);
+          $(window).bind("resize", ScaleSlider);
+          $(window).bind("orientationchange", ScaleSlider);
+
+ <!--slider master end-->
+});
+</script>
+
+
+  </body>
+</html>
+<!--以下没有sidebar，不知道具体是哪块内容 -->
