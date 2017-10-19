@@ -1,21 +1,87 @@
-<!--post, page, search, tags,categries, 什么都不是(index)-->
-<!--以下显示的时文章的内容-->
+<!DOCTYPE html>
 
- <!DOCTYPE HTML>
-<html lang="default">
-<head>
-  <meta name="baidu-site-verification" content="LaEytkZ008" />
-  <meta charset="UTF-8">
+
+
   
-    <title>C++的继承机制图解 | Luke&#39;s Summer</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
-    
-    <meta name="author" content="Luke Wang">
-    
-    <meta name="description" content="最近一直想用一张图去总结C++的继承机制。但是很快就发现，C++的继承机制比自己想象中要复杂得多，根本不可能用一张图就是解释得清楚。不过万事并不是一定要得到结果才算成功，想要总结的念头本身就让自己无形中有了对继承机制有了更深的理解。也尝试着用一张图去解释单继承中public，protected, private继承的特点，以及父类和子类中虚函数，构造函数和析构函数的关系。">
-    
-    
-    <meta name="description" content="最近一直想用一张图去总结C++的继承机制。但是很快就发现，C++的继承机制比自己想象中要复杂得多，根本不可能用一张图就是解释得清楚。不过万事并不是一定要得到结果才算成功，想要总结的念头本身就让自己无形中有了对继承机制有了更深的理解。也尝试着用一张图去解释单继承中public，protected, private继承的特点，以及父类和子类中虚函数，构造函数和析构函数的关系。">
+
+
+<html class="theme-next muse use-motion" lang="default">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Cpp,inheritance," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Luke's Summer" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="最近一直想用一张图去总结C++的继承机制。但是很快就发现，C++的继承机制比自己想象中要复杂得多，根本不可能用一张图就是解释得清楚。不过万事并不是一定要得到结果才算成功，想要总结的念头本身就让自己无形中有了对继承机制有了更深的理解。也尝试着用一张图去解释单继承中public，protected, private继承的特点，以及父类和子类中虚函数，构造函数和析构函数的关系。">
 <meta name="keywords" content="Cpp,inheritance">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++的继承机制图解">
@@ -30,787 +96,599 @@
 <meta name="twitter:description" content="最近一直想用一张图去总结C++的继承机制。但是很快就发现，C++的继承机制比自己想象中要复杂得多，根本不可能用一张图就是解释得清楚。不过万事并不是一定要得到结果才算成功，想要总结的念头本身就让自己无形中有了对继承机制有了更深的理解。也尝试着用一张图去解释单继承中public，protected, private继承的特点，以及父类和子类中虚函数，构造函数和析构函数的关系。">
 <meta name="twitter:image" content="http://7bv8rz.com1.z0.glb.clouddn.com/20150608-cpp-inheritance/cpp_inheritance.jpg">
 
-    
-    <link rel="alternative" href="/atom.xml" title="Luke&#39;s Summer" type="application/atom+xml">
-    
-    
-    <link rel="icon" href="/img/sun-smile-glasses-icon_128.png">
-    
-    
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css">
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lukesummer.org/2015/06/08/20150608-cpp-inheritance/"/>
+
+
+
+
+
+  <title>C++的继承机制图解 | Luke's Summer</title>
+  
+
+
+
+
+
+
+
+
 </head>
 
-  <body>
-    <header>
-      <div>
-		  <!--如果_config.yml中的imglogo是true并且src下有图片地址-->
-			<div id="imglogo">
-				<a href="/"><img src="/img/sun-smile-glasses-icon_128.png" alt="Luke&#39;s Summer" title="Luke&#39;s Summer"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="Luke&#39;s Summer">Luke&#39;s Summer</a></h1>
-				<h2 class="blog-motto">Take it easy and keep myself busy.</h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					<ul>
-					       <!--遍历所有的theme.menu下的变量-->
-						<li><a href="/">Home</a></li>
-					      <!--遍历所有的theme.menu下的变量-->
-						<li><a href="/study">Study</a></li>
-					      <!--遍历所有的theme.menu下的变量-->
-						<li><a href="/life">Life</a></li>
-					      <!--遍历所有的theme.menu下的变量-->
-						<li><a href="/archives">Archives</a></li>
-					      <!--遍历所有的theme.menu下的变量-->
-						<li><a href="/source">Sources</a></li>
-					      <!--遍历所有的theme.menu下的变量-->
-						<li><a href="/about">About</a></li>
-					
-					<li>
- 					
-						<form class="search" action="/search/index.html" method="get" accept-charset="utf-8">
-							<label>Search</label>
-					     <input type="text" id="st-search-input" name="q" class="st-search-input" size="30" placeholder="Search"/><br>
-						</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
   
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
+  
     
-      <a href="/2015/06/08/20150608-cpp-inheritance/" title="C++的继承机制图解" itemprop="url">C++的继承机制图解</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="http://lukesummer.org/about" title="Luke Wang" target="_blank" itemprop="author">Luke Wang</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-08T07:12:42.000Z" itemprop="datePublished"> Published 2015-06-08</time>
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
     
-  </p>
-</header>
-	<div class="article-content">
-		
-		<p>最近一直想用一张图去总结C++的继承机制。但是很快就发现，C++的继承机制比自己想象中要复杂得多，根本不可能用一张图就是解释得清楚。不过万事并不是一定要得到结果才算成功，想要总结的念头本身就让自己无形中有了对继承机制有了更深的理解。也尝试着用一张图去解释单继承中public，protected, private继承的特点，以及父类和子类中虚函数，构造函数和析构函数的关系。<br><img src="http://7bv8rz.com1.z0.glb.clouddn.com/20150608-cpp-inheritance/cpp_inheritance.jpg" style="display:block;margin:auto"><br><a id="more"></a><br>图中的点线线框（比如成员函数，构造函数和析构函数）表示不占有类的内存，箭头只是表示逻辑相连。<br>我们从上面开始说。<br>当一个基类的指针或者引用(引用机制其实和指针一样)被赋予了派生类的时候，其指向的仍然是基类的隐含对象的首地址。<br>如果基类中没有虚函数，则首地址指向的是基类的第一个成员变量。因此当用基类去调用成员函数的时候，调用的都是基类自己的成员函数。<br>而如果基类中虚函数，那么首地址就会存在一个vptr指针，指向一个vtable，vtable中存放着所有虚函数的在代码库（代码库是专门用来存放函数的）中的地址，而在继承过程中，vptr会被更新，指向派生类自己的vtable，于是虽然指针指向的时基类的首地址，但此时，这个首地址指的是派生类虚函数的vtable，所以用基类指针调用方法的时候，就会调用到子类的成员函数（当然得是虚函数）。<br>关于公有，保护和私有继承，就比较好记，记住这么一个式子就可以：min(原来访问属性，继承属性)，这里，我们假设public&gt;protected&gt;private. 如果是私有继承，那么基类中所有的成员的最高访问属性就不能超过私有。而如果新的访问属性大于私有，则会在派生类中开放一个访问渠道，派生类中得成员函数就可以访问基类的成员，而如果大于保护属性，则会在类外开放一个渠道。<br>对于继承而言，比如公有继承，基类中所有的公有变量都可以看做是派生类的共有变量，但是这幅图想说明的是，这些变量本质上还是在基类里面，只是在开放给了派生类，于是才等价于派生类自己的成员。<br>另外，构造函数和析构函数都是不可以被继承的。也就是说，派生类有自己的构造函数和析构函数，基类也有自己的构造函数和析构函数，但是都是相互独立没有联系的。我们之所以要经常把析构函数都赋予virtual的属性，也是由我们最初的基类指针引发的。因为基类指针虽然表面指向了派生类，但是本质上是指向了派生类中的隐含基类对象，所以你在在使用完这个基类指针的时候，用delete语句只能调用基类的析构函数，这个时候基类这个隐含对象没了，但是派生类的其他部分并没有被释放！这就是非常危险的内存泄露！所以用了虚析构函数之后，就可以调用派生类的析构函数，当然如果你调用派生类的虚构函数的时候，其内在的执行顺序是先执行基类的析构函数，再去释放派生中新增的部分，这样就不会造成内存的泄露。<br>基本上这幅图就包含了这些知识点。当然C++的继承机制，远远比这个要复杂，这里没有考虑到静态成员变量，也没有考虑到多重继承，不过学习总是循序渐进的，相信用图形去思考问题，肯定能让理解更为深刻。<br>如果这中间有什么写的不对，欢迎指正，谢谢！</p>
-  
-	</div>
-		<footer class="article-footer clearfix">
-<div class="article-catetags">
 
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/C/">C++</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Cpp/">Cpp</a><a href="/tags/inheritance/">inheritance</a>
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Luke's Summer</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Take it easy and keep myself busy.</p>
+      
   </div>
 
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
+<nav class="site-nav">
+  
 
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
 
-	<div class="article-share" id="share">
-	
-	  <div data-url="http://lukesummer.org/2015/06/08/20150608-cpp-inheritance/" data-title="C++的继承机制图解 | Luke&#39;s Summer" data-tsina="" class="share clearfix">
-	  </div>
-	
-	</div>
+      
+    </ul>
+  
 
-
-</footer>
-
-   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2015/07/05/20150705-murex-interview/" title="Murex面试经历">
-  <strong>Previous：</strong><br/>
-  <span>
-  Murex面试经历</span>
-</a>
-</div>
-
-
-<div class="next">
-<a href="/2015/06/01/20150601-walking/"  title="徒步小记">
- <strong>Next：</strong><br/> 
- <span>徒步小记
-</span>
-</a>
-</div>
-
+  
 </nav>
 
-	
-
-<section class="comment" id="comments">
- <!-- UY BEGIN -->
- <div id="uyan_frame"></div>
- <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2140846"></script>
-  <!-- UY END -->
-</section>
-
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
-<!--跟目录显示有关-->
-
-<div id="asidepart">
-
-<div id="sidebar-authorInfo">
-	
-		<div class="sidebar-author-logo"></div>		
-	
-	
-	<section class="sidebar-author-info">
-		
-			<p> 不要着急，慢慢学，Luke。 </p>
-		
-	</section>
-	 
-</div>
 
 
+ </div>
+    </header>
 
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
-<aside class="clearfix">
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
 
-  <script type="text/javascript" src="swfobject.js"></script>
-
-<style type="text/css">
-#music-content {
-  position: relative;
-  float: none;
-  width: auto;
-  margin: auto;
-}
-#hint {
-  color:#666;
-  margin-left:15%;
-  width:300px;
-  text-align:left;
-  margin-top:3em;
-}
-</style>
-
-
-
-
-<!--注意事项，data中得dewplayer前面一定要加/，否则有些页面路径就不正确-->
-<div id="music-content">
-  <p class="asidetitle">Music</p>
-  <br>
-   <!--bubble-->
-	<!-- <div id="dewplayer_content">
-	<object data="/dewplayer/dewplayer-bubble.swf" width="250" height="65" name="dewplayer" id="dewplayer" type="application/x-shockwave-flash">
-	<param name="movie" value="dewplayer/dewplayer-bubble.swf" />
-	<param name="flashvars" value="mp3=http://middlesummer.qiniudn.com/青春之旅.mp3" />
-	<param name="wmode" value="transparent" />
-	</object> -->
-  <!--playlist-->
-  <object type="application/x-shockwave-flash" data="/dewplayer/dewplayer-playlist.swf" width="300" height="200" id="dewplayer" name="dewplayer">
-  <param name="wmode" value="transparent" />
-  <param name="movie" value="dewplayer/dewplayer-playlist.swf" />
-  <param name="flashvars" value="showtime=true&autoreplay=true&xml=/playlist/playlist.xml" />
-  </object>
-</div>
-
-<!--<script type="text/javascript">
-var flashvars = {
-  mp3: "http://middlesummer.qiniudn.com/青春之旅.mp3"
-};
-var params = {
-  wmode: "transparent"
-};
-var attributes = {
-  id: "dewplayer"
-};
-swfobject.embedSWF("dewplayer-bubble.swf", "dewplayer_content", "250", "65", "9.0.0", false, flashvars, params, attributes);
-</script>-->
+  <div id="posts" class="posts-expand">
+    
 
   
-  <div class="widget-wrap">
-    <h3 class="asidetitle">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/C/">C++</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Economics/">Economics</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/W3C/">W3C</a><span class="category-list-count">1</span></li></ul>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lukesummer.org/2015/06/08/20150608-cpp-inheritance/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Luke Wang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Luke's Summer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++的继承机制图解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-06-08T15:12:42+08:00">
+                2015-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近一直想用一张图去总结C++的继承机制。但是很快就发现，C++的继承机制比自己想象中要复杂得多，根本不可能用一张图就是解释得清楚。不过万事并不是一定要得到结果才算成功，想要总结的念头本身就让自己无形中有了对继承机制有了更深的理解。也尝试着用一张图去解释单继承中public，protected, private继承的特点，以及父类和子类中虚函数，构造函数和析构函数的关系。<br><img src="http://7bv8rz.com1.z0.glb.clouddn.com/20150608-cpp-inheritance/cpp_inheritance.jpg" style="display:block;margin:auto"><br><a id="more"></a><br>图中的点线线框（比如成员函数，构造函数和析构函数）表示不占有类的内存，箭头只是表示逻辑相连。<br>我们从上面开始说。<br>当一个基类的指针或者引用(引用机制其实和指针一样)被赋予了派生类的时候，其指向的仍然是基类的隐含对象的首地址。<br>如果基类中没有虚函数，则首地址指向的是基类的第一个成员变量。因此当用基类去调用成员函数的时候，调用的都是基类自己的成员函数。<br>而如果基类中虚函数，那么首地址就会存在一个vptr指针，指向一个vtable，vtable中存放着所有虚函数的在代码库（代码库是专门用来存放函数的）中的地址，而在继承过程中，vptr会被更新，指向派生类自己的vtable，于是虽然指针指向的时基类的首地址，但此时，这个首地址指的是派生类虚函数的vtable，所以用基类指针调用方法的时候，就会调用到子类的成员函数（当然得是虚函数）。<br>关于公有，保护和私有继承，就比较好记，记住这么一个式子就可以：min(原来访问属性，继承属性)，这里，我们假设public&gt;protected&gt;private. 如果是私有继承，那么基类中所有的成员的最高访问属性就不能超过私有。而如果新的访问属性大于私有，则会在派生类中开放一个访问渠道，派生类中得成员函数就可以访问基类的成员，而如果大于保护属性，则会在类外开放一个渠道。<br>对于继承而言，比如公有继承，基类中所有的公有变量都可以看做是派生类的共有变量，但是这幅图想说明的是，这些变量本质上还是在基类里面，只是在开放给了派生类，于是才等价于派生类自己的成员。<br>另外，构造函数和析构函数都是不可以被继承的。也就是说，派生类有自己的构造函数和析构函数，基类也有自己的构造函数和析构函数，但是都是相互独立没有联系的。我们之所以要经常把析构函数都赋予virtual的属性，也是由我们最初的基类指针引发的。因为基类指针虽然表面指向了派生类，但是本质上是指向了派生类中的隐含基类对象，所以你在在使用完这个基类指针的时候，用delete语句只能调用基类的析构函数，这个时候基类这个隐含对象没了，但是派生类的其他部分并没有被释放！这就是非常危险的内存泄露！所以用了虚析构函数之后，就可以调用派生类的析构函数，当然如果你调用派生类的虚构函数的时候，其内在的执行顺序是先执行基类的析构函数，再去释放派生中新增的部分，这样就不会造成内存的泄露。<br>基本上这幅图就包含了这些知识点。当然C++的继承机制，远远比这个要复杂，这里没有考虑到静态成员变量，也没有考虑到多重继承，不过学习总是循序渐进的，相信用图形去思考问题，肯定能让理解更为深刻。<br>如果这中间有什么写的不对，欢迎指正，谢谢！</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Cpp/" rel="tag"># Cpp</a>
+          
+            <a href="/tags/inheritance/" rel="tag"># inheritance</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/06/01/20150601-walking/" rel="next" title="徒步小记">
+                <i class="fa fa-chevron-left"></i> 徒步小记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/05/20150705-murex-interview/" rel="prev" title="Murex面试经历">
+                Murex面试经历 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
     </div>
   </div>
 
 
-  
-<div class="tagslist">
-	<p class="asidetitle">Tags</p>
-		<ul class="clearfix">
-		
-			<li><a href="/tags/Cpp/" title="Cpp">Cpp<sup>8</sup></a></li>
-		
-			<li><a href="/tags/我所谓的诗/" title="我所谓的诗">我所谓的诗<sup>6</sup></a></li>
-		
-			<li><a href="/tags/geekband/" title="geekband">geekband<sup>3</sup></a></li>
-		
-			<li><a href="/tags/随想/" title="随想">随想<sup>2</sup></a></li>
-		
-			<li><a href="/tags/inheritance/" title="inheritance">inheritance<sup>2</sup></a></li>
-		
-			<li><a href="/tags/Java/" title="Java">Java<sup>2</sup></a></li>
-		
-			<li><a href="/tags/面试/" title="面试">面试<sup>1</sup></a></li>
-		
-			<li><a href="/tags/意识流/" title="意识流">意识流<sup>1</sup></a></li>
-		
-			<li><a href="/tags/delegation/" title="delegation">delegation<sup>1</sup></a></li>
-		
-			<li><a href="/tags/随拍/" title="随拍">随拍<sup>1</sup></a></li>
-		
-			<li><a href="/tags/C-primer/" title="C++ primer">C++ primer<sup>1</sup></a></li>
-		
-			<li><a href="/tags/basic-knowledge/" title="basic knowledge">basic knowledge<sup>1</sup></a></li>
-		
-			<li><a href="/tags/Configuration/" title="Configuration">Configuration<sup>1</sup></a></li>
-		
-			<li><a href="/tags/stack/" title="stack">stack<sup>1</sup></a></li>
-		
-			<li><a href="/tags/heap/" title="heap">heap<sup>1</sup></a></li>
-		
-			<li><a href="/tags/cout/" title="cout">cout<sup>1</sup></a></li>
-		
-			<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
-		
-			<li><a href="/tags/static/" title="static">static<sup>1</sup></a></li>
-		
-			<li><a href="/tags/singleton/" title="singleton">singleton<sup>1</sup></a></li>
-		
-			<li><a href="/tags/template/" title="template">template<sup>1</sup></a></li>
-		
-		</ul>
-</div>
+          </div>
+          
 
 
+          
+
   
-  <div class="tagcloudlist">
-    <p class="asidetitle">Tag Cloud</p>
-    <div class="tagcloudlist clearfix">
-       <a href="/tags/C-primer/" style="font-size: 10px;">C++ primer</a> <a href="/tags/Configuration/" style="font-size: 10px;">Configuration</a> <a href="/tags/Cpp/" style="font-size: 20px;">Cpp</a> <a href="/tags/Java/" style="font-size: 12.5px;">Java</a> <a href="/tags/PMI/" style="font-size: 10px;">PMI</a> <a href="/tags/basic-knowledge/" style="font-size: 10px;">basic knowledge</a> <a href="/tags/cout/" style="font-size: 10px;">cout</a> <a href="/tags/delegation/" style="font-size: 10px;">delegation</a> <a href="/tags/geekband/" style="font-size: 15px;">geekband</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/inheritance/" style="font-size: 12.5px;">inheritance</a> <a href="/tags/singleton/" style="font-size: 10px;">singleton</a> <a href="/tags/stack/" style="font-size: 10px;">stack</a> <a href="/tags/static/" style="font-size: 10px;">static</a> <a href="/tags/template/" style="font-size: 10px;">template</a> <a href="/tags/意识流/" style="font-size: 10px;">意识流</a> <a href="/tags/我所谓的诗/" style="font-size: 17.5px;">我所谓的诗</a> <a href="/tags/随想/" style="font-size: 12.5px;">随想</a> <a href="/tags/随拍/" style="font-size: 10px;">随拍</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
 
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
 
-  <div class="linkslist">
-  <p class="asidetitle">Links</p>
-    <ul>
-        
-          <li>
-            
-            	<a href="http://www.cnblogs.com/middlesummer/" target="_blank" title="middlesummer的博客">middlesummer的博客</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://kangfoo.github.io/" target="_blank" title=" 康哥的博客~">Kangfoo&#39;s blog</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://jayde721.com" target="_blank" title="山草小驻">山草小驻</a>
-            
-          </li>
-        
-    </ul>
-</div>
+      
 
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
-</div>
+      
 
-</aside>
-</div>
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Luke Wang</p>
+              <p class="site-description motion-element" itemprop="description">Take it easy and keep myself busy.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
     </div>
-    <footer><footer id="footer">
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Luke Wang</span>
+
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2017 Luke Wang<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-  <div class="social-font" class="clearfix">
-		
-		
-		<a href="https://github.com/lukesummer" target="_blank" class="icon-github" title="github"></a>
-		
-		
-		
-		
-		<a href="https://www.facebook.com/lukewanglz" target="_blank" class="icon-facebook" title="facebook"></a>
-		
-		
-		
-		
-		
-		
-		<a href="mailto:lukewanglz@outlook.com" target="_blank" class="icon-email" title="Email Me"></a>
-		
-	</div>
-</footer>
-
-
-
-<!-- <div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<section class="info">
-		<p> Hello ,I&#39;m Luke. <br/>
-			Welcome to my blog. Wish you could find something useful here!</p>
-	</section>
-	 
-	<div class="social-font" class="clearfix">
-		
-		
-		<a href="https://github.com/lukesummer" target="_blank" class="icon-github" title="github"></a>
-		
-		
-		
-		
-		<a href="https://www.facebook.com/lukewanglz" target="_blank" class="icon-facebook" title="facebook"></a>
-		
-		
-		
-		
-		
-		
-		<a href="mailto:lukewanglz@outlook.com" target="_blank" class="icon-email" title="Email Me"></a>
-		
-	</div>
-		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Pacman">Jacman</a> © 2017 
-		
-		<a href="http://lukesummer.org/about" target="_blank" title="Luke Wang">Luke Wang</a>
-		
-		</p>
 </div>
-  --></footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<!-- skitterSlider -->
-<script type="text/javascript" language="javascript" src="/js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" language="javascript" src="/js/jquery.skitter.min.js"></script>
-<!-- slider master-->
-<script type="text/javascript" src="/slider-master/js/jssor.js"></script>
-<script type="text/javascript" src="/slider-master/js/jssor.slider.js"></script>
-<link href="/slider-master/css/slider-master.css" rel="stylesheet" />
-<link href="/css/styles.css" type="text/css" media="all" rel="stylesheet" />
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
         
-    }
-  });
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-
-<!-- Slider master begin-->
-  <!--slider master end-->
-});
-</script>
 
 
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      h  = $('article h2')
-      ah = $('article h2'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  if(ah.length==0){
-    t.css('display','none');
-  }else{
-    c.click(function(){
-      ta.css('display', 'block').addClass('fadeIn');
-    });
-    o.click(function(){
-      ta.css('display', 'none');
-    });
-    $(window).scroll(function(){
-      ta.css("top",Math.max(140,320-$(this).scrollTop()));
-    });
-  };
-});
-</script>
 
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
 
 <script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina'),
-      description = $this.attr('description');
-  var html = [
-  '<a href="#" class="overlay" id="qrcode"></a>',
-  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
-  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-  $('.article-share-qrcode').click(function(){
-    var imgSrc = $('#qrcode-pic').attr('data-src');
-    $('#qrcode-pic').attr('src', imgSrc);
-    $('#qrcode-pic').load(function(){
-        $('.qrcode strong').text(' ');
-    });
-  });
-});     
-</script>
-
-
-
-<!--disqus在theme和config的配置文件配置都可以-->
-
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.article-content').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
-      var alt = this.alt;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
-    });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
-  if($.fancybox){
-    $('.fancybox').fancybox();
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
   }
-}); 
-</script>
-
-
-<!-- Swiftype Begin -->
-
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-  (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-  e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v1/st.js','_st');
-
-  _st('install','_MCrayRH1x2yYifEojbi');
-</script>
-
-<!-- Swifttype End -->
-
-
-<!-- Analytics Begin -->
-
-<script type="text/javascript">
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-60944965-1', 'lukesummer.org');  
-ga('send', 'pageview');
 </script>
 
 
 
-<!--<script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%68b2af6de021dae8b06acf46d374d64a' type='text/javascript'%3E%3C/script%3E"));
-</script>-->
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?68b2af6de021dae8b06acf46d374d64a";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
 
 
 
-<!-- Analytics End -->
-
-<!-- Totop Begin -->
-
-	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
-	</div>
-	<script src="/js/totop.js"></script>
-
-<!-- Totop End -->
-
-<!-- MathJax Begin -->
-<!-- mathjax config similar to math.stackexchange -->
 
 
-<!-- MathJax End -->
 
-<script type="text/javascript">
-$(document).ready(function(){ 
- <!-- Slider master begin-->
- var _SlideshowTransitions = [
-          //Collapse Random
-          { $Duration: 1000, $Delay: 80, $Cols: 10, $Rows: 4, $Clip: 15, $SlideOut: true, $Easing: $JssorEasing$.$EaseOutQuad }
-
-          //Fade in LR Chess
-          , { $Duration: 1200, y: 0.3, $Cols: 2, $During: { $Top: [0.3, 0.7] }, $ChessMode: { $Column: 12 }, $Easing: { $Top: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2, $Outside: true }
-
-          //Rotate VDouble+ out
-          , { $Duration: 1000, x: -1, y: 2, $Rows: 2, $Zoom: 11, $Rotate: 1, $SlideOut: true, $Assembly: 2049, $ChessMode: { $Row: 15 }, $Easing: { $Left: $JssorEasing$.$EaseInExpo, $Top: $JssorEasing$.$EaseInExpo, $Zoom: $JssorEasing$.$EaseInExpo, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInExpo }, $Opacity: 2, $Round: { $Rotate: 0.85 } }
-
-          ////Swing Inside in Stairs
-          //, { $Duration: 1200, x: 0.2, y: -0.1, $Delay: 20, $Cols: 10, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseInWave, $Clip: $JssorEasing$.$EaseOutQuad }, $Round: { $Left: 1.3, $Top: 2.5} }
-
-          //Zoom HDouble+ out
-          , { $Duration: 1200, x: 4, $Cols: 2, $Zoom: 11, $SlideOut: true, $Assembly: 2049, $ChessMode: { $Column: 15 }, $Easing: { $Left: $JssorEasing$.$EaseInExpo, $Zoom: $JssorEasing$.$EaseInExpo, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
-
-          ////Dodge Pet Inside in Stairs
-          //, { $Duration: 1500, x: 0.2, y: -0.1, $Delay: 20, $Cols: 10, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 260, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseInWave, $Clip: $JssorEasing$.$EaseOutQuad }, $Round: { $Left: 0.8, $Top: 2.5} }
-
-          //Rotate Zoom+ out BL
-          , { $Duration: 1200, x: 4, y: -4, $Zoom: 11, $Rotate: 1, $SlideOut: true, $Easing: { $Left: $JssorEasing$.$EaseInExpo, $Top: $JssorEasing$.$EaseInExpo, $Zoom: $JssorEasing$.$EaseInExpo, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInExpo }, $Opacity: 2, $Round: { $Rotate: 0.8 } }
-
-          //Dodge Dance Inside in Random
-          , { $Duration: 1500, x: 0.3, y: -0.3, $Delay: 80, $Cols: 10, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Easing: { $Left: $JssorEasing$.$EaseInJump, $Top: $JssorEasing$.$EaseInJump, $Clip: $JssorEasing$.$EaseOutQuad }, $Round: { $Left: 0.8, $Top: 2.5 } }
-
-          //Rotate VFork+ out
-          , { $Duration: 1200, x: -3, y: 1, $Rows: 2, $Zoom: 11, $Rotate: 1, $SlideOut: true, $Assembly: 2049, $ChessMode: { $Row: 28 }, $Easing: { $Left: $JssorEasing$.$EaseInExpo, $Top: $JssorEasing$.$EaseInExpo, $Zoom: $JssorEasing$.$EaseInExpo, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInExpo }, $Opacity: 2, $Round: { $Rotate: 0.7 } }
-
-          //Clip and Chess in
-          , { $Duration: 1200, y: -1, $Cols: 10, $Rows: 4, $Clip: 15, $During: { $Top: [0.5, 0.5], $Clip: [0, 0.5] }, $Formation: $JssorSlideshowFormations$.$FormationStraight, $ChessMode: { $Column: 12 }, $ScaleClip: 0.5 }
-
-          ////Swing Inside in Swirl
-          //, { $Duration: 1200, x: 0.2, y: -0.1, $Delay: 20, $Cols: 10, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationSwirl, $Assembly: 260, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseInWave, $Clip: $JssorEasing$.$EaseOutQuad }, $Round: { $Left: 1.3, $Top: 2.5} }
-
-          ////Rotate Zoom+ out
-          //, { $Duration: 1200, $Zoom: 11, $Rotate: 1, $SlideOut: true, $Easing: { $Zoom: $JssorEasing$.$EaseInCubic, $Rotate: $JssorEasing$.$EaseInCubic }, $Opacity: 2, $Round: { $Rotate: 0.7} }
-
-          ////Dodge Pet Inside in ZigZag
-          //, { $Duration: 1500, x: 0.2, y: -0.1, $Delay: 20, $Cols: 10, $Rows: 4, $Clip: 15, $During: { $Left: [0.3, 0.7], $Top: [0.3, 0.7] }, $Formation: $JssorSlideshowFormations$.$FormationZigZag, $Assembly: 260, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseInWave, $Clip: $JssorEasing$.$EaseOutQuad }, $Round: { $Left: 0.8, $Top: 2.5} }
-
-          //Rotate Zoom- out TL
-          , { $Duration: 1200, x: 0.5, y: 0.5, $Zoom: 1, $Rotate: 1, $SlideOut: true, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Top: $JssorEasing$.$EaseInCubic, $Zoom: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInCubic }, $Opacity: 2, $Round: { $Rotate: 0.5 } }
-
-          //Rotate Zoom- in BR
-          , { $Duration: 1200, x: -0.6, y: -0.6, $Zoom: 1, $Rotate: 1, $During: { $Left: [0.2, 0.8], $Top: [0.2, 0.8], $Zoom: [0.2, 0.8], $Rotate: [0.2, 0.8] }, $Easing: { $Zoom: $JssorEasing$.$EaseSwing, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseSwing }, $Opacity: 2, $Round: { $Rotate: 0.5 } }
-
-          // Wave out Eagle
-          , { $Duration: 1500, y: -0.5, $Delay: 60, $Cols: 24, $SlideOut: true, $Formation: $JssorSlideshowFormations$.$FormationCircle, $Easing: $JssorEasing$.$EaseInWave, $Round: { $Top: 1.5 } }
-
-          //Expand Stairs
-          , { $Duration: 1000, $Delay: 30, $Cols: 10, $Rows: 4, $Clip: 15, $Formation: $JssorSlideshowFormations$.$FormationStraightStairs, $Assembly: 2050, $Easing: $JssorEasing$.$EaseInQuad }
-
-          //Fade Clip out H
-          , { $Duration: 1200, $Delay: 20, $Clip: 3, $SlideOut: true, $Assembly: 260, $Easing: { $Clip: $JssorEasing$.$EaseOutCubic, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 }
-
-          ////Dodge Pet Inside in Random Chess
-          //, { $Duration: 1500, x: 0.2, y: -0.1, $Delay: 80, $Cols: 10, $Rows: 4, $Clip: 15, $During: { $Left: [0.2, 0.8], $Top: [0.2, 0.8] }, $ChessMode: { $Column: 15, $Row: 15 }, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseInWave, $Clip: $JssorEasing$.$EaseLinear }, $Round: { $Left: 0.8, $Top: 2.5} }
-          ];
-
-          //Reference http://www.jssor.com/development/slider-with-caption-jquery.html
-          //Reference http://www.jssor.com/development/reference-ui-definition.html#captiondefinition
-          //Reference http://www.jssor.com/development/tool-caption-transition-viewer.html
-
-          var _CaptionTransitions = [];
-          _CaptionTransitions["L"] = { $Duration: 900, x: 0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
-          _CaptionTransitions["R"] = { $Duration: 900, x: -0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
-          _CaptionTransitions["T"] = { $Duration: 900, y: 0.6, $Easing: { $Top: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
-          _CaptionTransitions["B"] = { $Duration: 900, y: -0.6, $Easing: { $Top: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
-          _CaptionTransitions["TR"] = { $Duration: 900, x: -0.6, y: 0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine, $Top: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
-
-          _CaptionTransitions["L|IB"] = { $Duration: 1200, x: 0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutBack }, $Opacity: 2 };
-          _CaptionTransitions["R|IB"] = { $Duration: 1200, x: -0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutBack }, $Opacity: 2 };
-          _CaptionTransitions["T|IB"] = { $Duration: 1200, y: 0.6, $Easing: { $Top: $JssorEasing$.$EaseInOutBack }, $Opacity: 2 };
-
-          _CaptionTransitions["CLIP|LR"] = { $Duration: 900, $Clip: 3, $Easing: { $Clip: $JssorEasing$.$EaseInOutCubic }, $Opacity: 2 };
-          _CaptionTransitions["CLIP|TB"] = { $Duration: 900, $Clip: 12, $Easing: { $Clip: $JssorEasing$.$EaseInOutCubic }, $Opacity: 2 };
-          _CaptionTransitions["CLIP|L"] = { $Duration: 900, $Clip: 1, $Easing: { $Clip: $JssorEasing$.$EaseInOutCubic }, $Opacity: 2 };
-
-          _CaptionTransitions["MCLIP|R"] = { $Duration: 900, $Clip: 2, $Move: true, $Easing: { $Clip: $JssorEasing$.$EaseInOutCubic }, $Opacity: 2 };
-          _CaptionTransitions["MCLIP|T"] = { $Duration: 900, $Clip: 4, $Move: true, $Easing: { $Clip: $JssorEasing$.$EaseInOutCubic }, $Opacity: 2 };
-
-          _CaptionTransitions["WV|B"] = { $Duration: 1200, x: -0.2, y: -0.6, $Easing: { $Left: $JssorEasing$.$EaseInWave, $Top: $JssorEasing$.$EaseLinear }, $Opacity: 2, $Round: { $Left: 1.5} };
-
-          _CaptionTransitions["TORTUOUS|VB"] = { $Duration: 1800, y: -0.2, $Zoom: 1, $Easing: { $Top: $JssorEasing$.$EaseOutWave, $Zoom: $JssorEasing$.$EaseOutCubic }, $Opacity: 2, $During: { $Top: [0, 0.7] }, $Round: { $Top: 1.3} };
-
-          _CaptionTransitions["LISTH|R"] = { $Duration: 1500, x: -0.8, $Clip: 1, $Easing: $JssorEasing$.$EaseInOutCubic, $ScaleClip: 0.8, $Opacity: 2, $During: { $Left: [0.4, 0.6], $Clip: [0, 0.4], $Opacity: [0.4, 0.6]} };
-
-          _CaptionTransitions["RTT|360"] = { $Duration: 900, $Rotate: 1, $Easing: { $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInQuad }, $Opacity: 2 };
-          _CaptionTransitions["RTT|10"] = { $Duration: 900, $Zoom: 11, $Rotate: 1, $Easing: { $Zoom: $JssorEasing$.$EaseInExpo, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInExpo }, $Opacity: 2, $Round: { $Rotate: 0.8} };
-
-          _CaptionTransitions["RTTL|BR"] = { $Duration: 900, x: -0.6, y: -0.6, $Zoom: 11, $Rotate: 1, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Top: $JssorEasing$.$EaseInCubic, $Zoom: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInCubic }, $Opacity: 2, $Round: { $Rotate: 0.8} };
-
-          _CaptionTransitions["T|IE*IE"] = { $Duration: 1800, y: 0.8, $Zoom: 11, $Rotate: -1.5, $Easing: { $Top: $JssorEasing$.$EaseInOutElastic, $Zoom: $JssorEasing$.$EaseInElastic, $Rotate: $JssorEasing$.$EaseInOutElastic }, $Opacity: 2, $During: { $Zoom: [0, 0.8], $Opacity: [0, 0.7] }, $Round: { $Rotate: 0.5} };
-
-          _CaptionTransitions["RTTS|R"] = { $Duration: 900, x: -0.6, $Zoom: 1, $Rotate: 1, $Easing: { $Left: $JssorEasing$.$EaseInQuad, $Zoom: $JssorEasing$.$EaseInQuad, $Rotate: $JssorEasing$.$EaseInQuad, $Opacity: $JssorEasing$.$EaseOutQuad }, $Opacity: 2, $Round: { $Rotate: 1.2} };
-          _CaptionTransitions["RTTS|T"] = { $Duration: 900, y: 0.6, $Zoom: 1, $Rotate: 1, $Easing: { $Top: $JssorEasing$.$EaseInQuad, $Zoom: $JssorEasing$.$EaseInQuad, $Rotate: $JssorEasing$.$EaseInQuad, $Opacity: $JssorEasing$.$EaseOutQuad }, $Opacity: 2, $Round: { $Rotate: 1.2} };
-
-          _CaptionTransitions["DDGDANCE|RB"] = { $Duration: 1800, x: -0.3, y: -0.3, $Zoom: 1, $Easing: { $Left: $JssorEasing$.$EaseInJump, $Top: $JssorEasing$.$EaseInJump, $Zoom: $JssorEasing$.$EaseOutQuad }, $Opacity: 2, $During: { $Left: [0, 0.8], $Top: [0, 0.8] }, $Round: { $Left: 0.8, $Top: 2.5} };
-          _CaptionTransitions["ZMF|10"] = { $Duration: 900, $Zoom: 11, $Easing: { $Zoom: $JssorEasing$.$EaseInExpo, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 };
-          _CaptionTransitions["DDG|TR"] = { $Duration: 1200, x: -0.3, y: 0.3, $Zoom: 1, $Easing: { $Left: $JssorEasing$.$EaseInJump, $Top: $JssorEasing$.$EaseInJump }, $Opacity: 2, $During: { $Left: [0, 0.8], $Top: [0, 0.8] }, $Round: { $Left: 0.8, $Top: 0.8} };
-
-          _CaptionTransitions["FLTTR|R"] = { $Duration: 900, x: -0.2, y: -0.1, $Easing: { $Left: $JssorEasing$.$EaseLinear, $Top: $JssorEasing$.$EaseInWave }, $Opacity: 2, $Round: { $Top: 1.3} };
-          _CaptionTransitions["FLTTRWN|LT"] = { $Duration: 1800, x: 0.5, y: 0.2, $Zoom: 1, $Easing: { $Left: $JssorEasing$.$EaseInOutSine, $Top: $JssorEasing$.$EaseInWave, $Zoom: $JssorEasing$.$EaseInOutQuad }, $Opacity: 2, $During: { $Left: [0, 0.7], $Top: [0.1, 0.7] }, $Round: { $Top: 1.3} };
-
-          _CaptionTransitions["ATTACK|BR"] = { $Duration: 1500, x: -0.1, y: -0.5, $Zoom: 1, $Easing: { $Left: $JssorEasing$.$EaseOutWave, $Top: $JssorEasing$.$EaseInExpo }, $Opacity: 2, $During: { $Left: [0.3, 0.7], $Top: [0, 0.7] }, $Round: { $Left: 1.3} };
-
-          _CaptionTransitions["FADE"] = { $Duration: 900, $Opacity: 2 };
-
-          var options = {
-              $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
-              $AutoPlaySteps: 1,                                  //[Optional] Steps to go for each navigation request (this options applys only when slideshow disabled), the default value is 1
-              $AutoPlayInterval: 2000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
-              $PauseOnHover: 1,                                   //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
-
-              $ArrowKeyNavigation: true,                    //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
-              $SlideEasing: $JssorEasing$.$EaseOutQuint,          //[Optional] Specifies easing for right to left animation, default value is $JssorEasing$.$EaseOutQuad
-              $SlideDuration: 800,                                //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
-              $MinDragOffsetToSlide: 20,                          //[Optional] Minimum drag offset to trigger slide , default value is 20
-              //$SlideWidth: 600,                                 //[Optional] Width of every slide in pixels, default value is width of 'slides' container
-              //$SlideHeight: 300,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
-              $SlideSpacing: 0,                           //[Optional] Space between each slide in pixels, default value is 0
-              $DisplayPieces: 1,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
-              $ParkingPosition: 0,                                //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
-              $UISearchMode: 1,                                   //[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
-              $PlayOrientation: 1,                                //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
-              $DragOrientation: 3,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
-
-              $SlideshowOptions: {                                //[Optional] Options to specify and enable slideshow or not
-                  $Class: $JssorSlideshowRunner$,                 //[Required] Class to create instance of slideshow
-                  $Transitions: _SlideshowTransitions,            //[Required] An array of slideshow transitions to play slideshow
-                  $TransitionsOrder: 1,                           //[Optional] The way to choose transition to play slide, 1 Sequence, 0 Random
-                  $ShowLink: true                                    //[Optional] Whether to bring slide link on top of the slider when slideshow is running, default value is false
-              },
-
-              $CaptionSliderOptions: {                            //[Optional] Options which specifies how to animate caption
-                  $Class: $JssorCaptionSlider$,                   //[Required] Class to create instance to animate caption
-                  $CaptionTransitions: _CaptionTransitions,       //[Required] An array of caption transitions to play caption, see caption transition section at jssor slideshow transition builder
-                  $PlayInMode: 1,                                 //[Optional] 0 None (no play), 1 Chain (goes after main slide), 3 Chain Flatten (goes after main slide and flatten all caption animations), default value is 1
-                  $PlayOutMode: 3                                 //[Optional] 0 None (no play), 1 Chain (goes before main slide), 3 Chain Flatten (goes before main slide and flatten all caption animations), default value is 1
-              },
-
-              $ArrowNavigatorOptions: {                       //[Optional] Options to specify and enable arrow navigator or not
-                  $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
-                  $ChanceToShow: 1,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
-                  $AutoCenter: 2,                                 //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
-                  $Steps: 1                                       //[Optional] Steps to go for each navigation request, default value is 1
-              },
-
-              $BulletNavigatorOptions: {                                //[Optional] Options to specify and enable navigator or not
-                  $Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
-                  $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
-                  $AutoCenter: 1,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
-                  $Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
-                  $Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
-                  $SpacingX: 4,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
-                  $SpacingY: 4,                                   //[Optional] Vertical space between each item in pixel, default value is 0
-                  $Orientation: 1                                 //[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
-              }
-          };
-
-          var jssor_slider1 = new $JssorSlider$("slider1_container", options);
-          //responsive code begin
-          //you can remove responsive code if you don't want the slider scales while window resizes
-          function ScaleSlider() {
-              var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
-              if (parentWidth)
-                  jssor_slider1.$ScaleWidth(Math.max(Math.min(parentWidth, 980), 300));
-              else
-                  window.setTimeout(ScaleSlider, 30);
-          }
-          ScaleSlider();
-
-          $(window).bind("load", ScaleSlider);
-          $(window).bind("resize", ScaleSlider);
-          $(window).bind("orientationchange", ScaleSlider);
-
- <!--slider master end-->
-});
-</script>
+  
 
 
-  </body>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
 </html>
-<!--以下没有sidebar，不知道具体是哪块内容 -->
